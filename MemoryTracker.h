@@ -51,7 +51,11 @@ extern char *__progname;
 // addresses into file name/line number & to
 // de-mangle C++ names.
 #if defined(__APPLE__)
+#if defined(__arm64__)
+#  define ATOS "/usr/bin/atos -arch arm64 -o "
+#else
 #  define ATOS "/usr/bin/atos -arch x86_64 -o "
+#endif
 #  define ADDR_LOOKUP ATOS
 #else
 #  define CPP_FILT  "c++filt -n "
@@ -197,7 +201,7 @@ namespace cppt
 		{
 		}
 		
-		static void *track(std::size_t c, Address a, bool ar) throw (std::bad_alloc)
+		static void *track(std::size_t c, Address a, bool ar) noexcept(false)
 		{
 			void *p = std::malloc(c);
 			if (p)

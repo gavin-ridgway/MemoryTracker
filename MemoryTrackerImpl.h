@@ -1,5 +1,6 @@
 #ifndef MEMORYTRACKERIMPL_H_
 #define MEMORYTRACKERIMPL_H_
+//#include "MemoryTracker.h"
 
 bool cppt::MemoryTracker::logging = false;
 cppt::MemoryTracker::MemoryMap *cppt::MemoryTracker::allocMap = 0;
@@ -14,7 +15,7 @@ namespace
     cppt::MemoryTracker m;
 }
 
-void *operator new(std::size_t count) throw(std::bad_alloc)
+void *operator new(std::size_t count) noexcept(false)
 {
     void *SP;
     GET_STACKPOINTER(SP);
@@ -24,7 +25,7 @@ void *operator new(std::size_t count) throw(std::bad_alloc)
         static_cast<cppt::MemoryTracker::Address>(RETURN_ADDRESS(SP)), false);
 }
 
-void *operator new[](std::size_t count) throw(std::bad_alloc)
+void *operator new[](std::size_t count) noexcept(false)
 {
     void *SP;
     GET_STACKPOINTER(SP);

@@ -3,6 +3,7 @@
 #ifndef MALLOC_ALLOCATOR_H_
 #define MALLOC_ALLOCATOR_H_
 
+#include <new>
 #include <stdexcept>
 #include <cstdlib>
 
