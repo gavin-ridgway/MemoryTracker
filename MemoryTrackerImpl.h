@@ -15,7 +15,7 @@ namespace
     cppt::MemoryTracker m;
 }
 
-void *operator new(std::size_t count) noexcept(false)
+void *operator new(std::size_t count)
 {
     void *SP;
     GET_STACKPOINTER(SP);
@@ -25,7 +25,7 @@ void *operator new(std::size_t count) noexcept(false)
         static_cast<cppt::MemoryTracker::Address>(RETURN_ADDRESS(SP)), false);
 }
 
-void *operator new[](std::size_t count) noexcept(false)
+void *operator new[](std::size_t count)
 {
     void *SP;
     GET_STACKPOINTER(SP);

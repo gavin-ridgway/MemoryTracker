@@ -201,7 +201,7 @@ namespace cppt
 		{
 		}
 		
-		static void *track(std::size_t c, Address a, bool ar) noexcept(false)
+		static void *track(std::size_t c, Address a, bool ar)
 		{
 			void *p = std::malloc(c);
 			if (p)
